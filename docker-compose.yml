@@ -1,0 +1,15 @@
+services:
+  elk:
+    image: yaselsuarez/elk
+    container_name: elk
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5044:5044"
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    volumes:
+      - ./logstash_config:/opt/logstash/config/
+      - ./elasticsearch_config:/opt/elasticsearch/config/
+      - ./kibana_config:/opt/kibana/config/
